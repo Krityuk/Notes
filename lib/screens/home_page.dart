@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _navigateToAddNoteScreen() {
+    // this navigator me blocProvider ko pass kr diya, taki homePage and addnotepage dono me same instance of notebloc rhe
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -186,50 +187,47 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           },
-                          child: Hero(
-                            tag: 'noteCard_${note.title}',
-                            child: Card(
-                              elevation: 2,
-                              shape: RoundedRectangleBorder(
+                          child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Colors.blue,
+                                    Colors.lightBlue,
+                                    Colors.blueGrey
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Container(
-                                padding: const EdgeInsets.all(16),
-                                decoration: BoxDecoration(
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Colors.blue,
-                                      Colors.lightBlue,
-                                      Colors.blueGrey
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    note.title,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      note.title,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    note.descr,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
                                     ),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                      note.descr,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

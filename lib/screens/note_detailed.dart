@@ -42,15 +42,12 @@ class _NoteScreenState extends State<NoteScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Hero(
-                  tag: 'noteCard_${widget.note.title}',
-                  child: Text(
-                    widget.note.title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
+                Text(
+                  widget.note.title,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                   ),
                 ),
                 const SizedBox(height: 10),
