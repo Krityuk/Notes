@@ -32,8 +32,7 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void _navigateToAddNoteScreen() {
-    // this navigator me blocProvider ko pass kr diya, taki homePage and addnotepage dono me same instance of notebloc rhe
+  void _navigateToAddNoteScreen() { // this navigator me blocProvider ko pass kr diya, taki homePage and addnotepage dono me same ins
     Navigator.push(
       context,
       MaterialPageRoute(
