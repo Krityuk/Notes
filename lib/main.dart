@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:round3_banao_flutter/bloc_add_newNote/add_note_bloc.dart';
 import 'package:round3_banao_flutter/bloc_firebase/bloc_in_it.dart';
@@ -52,4 +53,16 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+void myShowToast({required message, Color? textColor}) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 2,
+    backgroundColor: Colors.pink,
+    textColor: textColor ?? Colors.white,
+    fontSize: 16.0,
+  );
 }

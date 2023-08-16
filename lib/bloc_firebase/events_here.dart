@@ -19,3 +19,4 @@ class UpdateNoteTrashStatusEvent extends NotesEvent {
 
   const UpdateNoteTrashStatusEvent(this.id, this.isTrash);
 }
+

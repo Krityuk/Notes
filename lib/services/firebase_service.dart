@@ -5,6 +5,7 @@ class FirebaseService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // Fetch notes list from Firebase based on isTrash flag
+  //NOTE this func returns unTrashednoteslist when coming bool isTrash is false and it returns trashed notes list when isTrash is true
   static Future<List<NotesModel>> getNotesList(bool isTrash) async {
     try {
       final snapshot = await _firestore
@@ -13,9 +14,8 @@ class FirebaseService {
           .where('isTrash', isEqualTo: isTrash.toString())
           .get();
 
-      final notesList = snapshot.docs
-          .map((doc) => NotesModel.fromJson(doc.data()))
-          .toList();
+      final notesList =
+          snapshot.docs.map((doc) => NotesModel.fromJson(doc.data())).toList();
 
       return notesList;
     } catch (e) {

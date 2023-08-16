@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:round3_banao_flutter/models/noteslist_model.dart';
+import 'package:round3_banao_flutter/screens/edit_note_screen.dart';
 
 class NoteScreen extends StatefulWidget {
   final NotesModel note;
@@ -11,13 +12,13 @@ class NoteScreen extends StatefulWidget {
 }
 
 class _NoteScreenState extends State<NoteScreen> {
-  void _editNote() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => AddNoteScreen(),
-    //   ),
-    // );
+  void funcEditNote(NotesModel note) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditNoteScreen(note: note),
+      ),
+    );
   }
 
   @override
@@ -42,12 +43,15 @@ class _NoteScreenState extends State<NoteScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.note.title,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+                Hero(
+                  tag: 'noteCard_${widget.note.title}',
+                  child: Text(
+                    widget.note.title,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -69,15 +73,17 @@ class _NoteScreenState extends State<NoteScreen> {
                   thickness: 2.0,
                 ),
                 const SizedBox(height: 30),
-                Text('Date of creating note is: ${widget.note.timestamp}',
-                    style: const TextStyle(color: Colors.purple))
+                Text('Date of creating note is: ${widget.note.timestamp}\n',
+                    style: const TextStyle(color: Colors.purple)),
+                Text('${widget.note.descr.length} characters',
+                    style: const TextStyle(color: Colors.black54))
               ],
             ),
           ),
         ),
         //*********************************************** */
         floatingActionButton: FloatingActionButton.extended(
-          onPressed: _editNote,
+          onPressed: () => funcEditNote(widget.note),
           label: const Text('Edit this Note'),
           icon: const Icon(Icons.edit),
         ),

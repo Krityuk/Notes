@@ -19,6 +19,7 @@ class NotesModel extends Equatable {
   });
 
   factory NotesModel.fromJson(Map<String, dynamic> json) {
+    // fromJson is just a func that takes map as input and returns a NotesModel obj
     return NotesModel(
       id: json["id"],
       title: json["title"],
@@ -30,6 +31,7 @@ class NotesModel extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
+    //It returns Map<String, dynamic>
     return {
       "id": id,
       "title": title,

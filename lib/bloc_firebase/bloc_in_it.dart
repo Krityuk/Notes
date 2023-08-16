@@ -21,6 +21,7 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
         await FirebaseService.updateNoteTrashStatus(event.id, event.isTrash);
       } catch (error) {
         debugPrint('Error updating note trash status: $error');
+        emit(NotesErrorState(error.toString()));
       }
     });
   }
