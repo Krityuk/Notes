@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart'; // for object1 ==object2 compare dire
 
 // ignore: must_be_immutable
 class NotesModel extends Equatable {
+  // ATTRIBUTES :-
   String id;
   String title;
   String descr;
@@ -9,6 +10,7 @@ class NotesModel extends Equatable {
   String isImportant;
   String isTrash;
 
+  // CONSTRUCTOR :- oops me jaisa constructor hota h vaisa hi constructor
   NotesModel({
     required this.id,
     required this.title,
@@ -18,8 +20,8 @@ class NotesModel extends Equatable {
     required this.isTrash,
   });
 
+  // NOTE CLASSNAME.FROMJSON()  is just a func that takes map as input and returns a NotesModel obj
   factory NotesModel.fromJson(Map<String, dynamic> json) {
-    // fromJson is just a func that takes map as input and returns a NotesModel obj
     return NotesModel(
       id: json["id"],
       title: json["title"],
@@ -30,8 +32,8 @@ class NotesModel extends Equatable {
     );
   }
 
+  // NOTE CLASSNAME.TOJSON()  is just a func that takes model as input and convets it into map/json
   Map<String, dynamic> toJson() {
-    //It returns Map<String, dynamic>
     return {
       "id": id,
       "title": title,
@@ -42,7 +44,7 @@ class NotesModel extends Equatable {
     };
   }
 
-  @override
-  List<Object?> get props =>
+  @override // EQUATABLE PACKAGE IS FOR overriding the '==' and THE hashCode methods
+  List<Object?> get props => // EASY COMPARISION OF OBJECTS
       [id, title, descr, timestamp, isImportant, isTrash];
 }

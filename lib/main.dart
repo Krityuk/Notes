@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AddNoteBloc())
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'Times',
